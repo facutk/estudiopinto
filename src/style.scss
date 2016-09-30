@@ -1,0 +1,53 @@
+body {
+    background-color: #fafafa;
+}
+
+.nav-header {
+    background-color: black;
+    color: white;
+    font-size: 2em;
+    padding: 0.5em;
+    margin-bottom: 1em;
+
+    .logo {
+        display: inline-block;
+        margin-right: 1em;
+        background: url('logo.png');
+        height: 60px;
+        width: 100px;
+        background-repeat: no-repeat;
+        background-position: 0 -25px;
+        background-size: 100px 100px;
+    }
+}
+
+.dni-entry {
+    height: 100%;
+    text-align: center;
+}
+
+.flash-message {
+    display: block;
+    margin-bottom: 1em;
+    .ui.compact.message {
+        width: 365px;
+        text-align: left;
+    }
+}
+
+.client-status {
+    padding: 2em;
+
+    .item {
+        margin: 20px;
+
+        p {
+            margin-left: 10px;
+        }
+    }
+
+    .last-update {
+        color: #666;
+        margin: 20px;
+    }
+}
