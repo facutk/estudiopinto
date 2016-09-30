@@ -61,9 +61,9 @@ class DNIEntry extends React.Component {
             }
             this.setState({
                 fetching: false,
-                updated,
                 client,
-                flashMessage,
+                updated,
+                flashMessage
             });
         });
     }
@@ -71,7 +71,8 @@ class DNIEntry extends React.Component {
     setDNI = (event) => {
         this.setState({
             dni: event.target.value,
-            client: []
+            client: [],
+            updated: null
         })
     }
 
