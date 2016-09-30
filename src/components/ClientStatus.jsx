@@ -10,7 +10,9 @@ const ClientStatus = ({ status = [], updated = null }) => {
             </div>
         )
     })
-    const lastUpdate = updated ? (<small className="last-update">Última actualización {updated}</small>):('');
+    const lastUpdate = updated ? (
+        <small className="last-update"><i className="checked calendar icon"></i>Última actualización {updated}</small>
+    ):('');
     return (
         <div className="client-status">
             {statusList}
