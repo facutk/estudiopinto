@@ -8,8 +8,9 @@ class DNIEntry extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            client: [],
             dni: '',
+            name: null,
+            status: [],
             flashMessage: null,
             updated: null
         };
@@ -41,11 +42,11 @@ class DNIEntry extends React.Component {
                 updated = res.updated.replace(/T|Z/g,' ');
             }
             let flashMessage = null;
-            const client = clients.filter(client => {
+            const status = clients.filter(client => {
                 return client.dni == this.state.dni;
             });
             console.log(res);
-            if (client.length == 0) {
+            if (status.length == 0) {
                 flashMessage = {
                     title: 'DNI no encontrado',
                     description: 'No existe aún el DNI en nuestra base de datos.',
@@ -59,9 +60,16 @@ class DNIEntry extends React.Component {
                     severity: 'high'
                 }
             }
+            let name = null;
+            if (status && status[0] && status[0].nombre) {
+                name = status[0].nombre;
+            } else {
+                updated = null;
+            }
             this.setState({
                 fetching: false,
-                client,
+                name,
+                status,
                 updated,
                 flashMessage
             });
@@ -71,7 +79,8 @@ class DNIEntry extends React.Component {
     setDNI = (event) => {
         this.setState({
             dni: event.target.value,
-            client: [],
+            name: null,
+            status: [],
             updated: null
         })
     }
@@ -115,7 +124,8 @@ class DNIEntry extends React.Component {
                     </div>
                 </div>
                 <ClientStatus
-                    status={this.state.client}
+                    name={this.state.name}
+                    status={this.state.status}
                     updated={this.state.updated}
                 />
             </div>

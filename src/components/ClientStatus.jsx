@@ -1,13 +1,13 @@
 import React from 'react';
 
-const ClientStatus = ({ status = [], updated = null }) => {
+const ClientStatus = ({ name = '', status = [], updated = null }) => {
     const statusList = status
-    .map( (client, index) => {
+    .map( (stat, index) => {
         return (
-            <div key={index} className="item">
-                <h2>{client.nombre}</h2>
-                <p>{client.status}</p>
-            </div>
+            <li key={index} className="item">
+                <p><i>{stat.autos}</i></p>
+                <p><b>{stat.estado}</b></p>
+            </li>
         )
     })
     const lastUpdate = updated ? (
@@ -15,7 +15,10 @@ const ClientStatus = ({ status = [], updated = null }) => {
     ):('');
     return (
         <div className="client-status">
-            {statusList}
+            <h1>{name}</h1>
+            <ul>
+                {statusList}
+            </ul>
             {lastUpdate}
         </div>
     )
